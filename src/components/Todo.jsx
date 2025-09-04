@@ -31,6 +31,7 @@ const Todo = () => {
   }
 
   function editTodo() {
+    if (inputRef.current.value.trim() === "") return;
     const updatedTodoList = todos.map((todo) => {
       if (todo.no === selectedID) {
         return { ...todo, text: inputRef.current.value };
