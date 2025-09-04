@@ -2,14 +2,19 @@ import "./CSS/TodoItems.css";
 import tick from "./assets/tick.png";
 import not_tick from "./assets/not_tick.png";
 import PropTypes from "prop-types";
-import { FaTimes } from "react-icons/fa";
+import { FaPen, FaTimes } from "react-icons/fa";
 
-const TodoItems = ({ no, display, text, setTodos }) => {
+const TodoItems = ({ no, display, text, setTodos, edit }) => {
   const deleteTodo = (no) => {
     let data = JSON.parse(localStorage.getItem("todos"));
     data = data.filter((todo) => todo.no !== no);
     setTodos(data);
   };
+  // const editTodo = (no) => {
+  //   let data = JSON.parse(localStorage.getItem("todos"));
+  //   data = data.filter((todo) => todo.no !== no);
+  //   setTodos(data);
+  // };
 
   const toggle = () => {
     let data = JSON.parse(localStorage.getItem("todos"));
@@ -42,12 +47,20 @@ const TodoItems = ({ no, display, text, setTodos }) => {
         <div className={`todoitems-text ${display}`}>{text}</div>
       </div>
 
-      <FaTimes
-        className="todoitems-cross-icon"
-        onClick={() => {
-          deleteTodo(no);
-        }}
-      />
+      <div className="todo-extra">
+        <FaPen
+          className="todoitems-icon"
+          onClick={() => {
+            edit(no);
+          }}
+        />
+        <FaTimes
+          className="todoitems-icon"
+          onClick={() => {
+            deleteTodo(no);
+          }}
+        />
+      </div>
     </div>
   );
 };
@@ -59,4 +72,5 @@ TodoItems.propTypes = {
   display: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   setTodos: PropTypes.func.isRequired,
+  edit: PropTypes.func.isRequired,
 };

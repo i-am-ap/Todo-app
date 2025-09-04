@@ -7,6 +7,8 @@ import TodoItems from "./TodoItems";
 let count = 0;
 const Todo = () => {
   const [todos, setTodos] = useState([]);
+  const [isEdited, setIsEdited] = useState(false);
+  const [selectedID, setSelectedID] = useState(null);
   const inputRef = useRef(null);
 
   const add = () => {
@@ -21,9 +23,30 @@ const Todo = () => {
     }
   };
 
+  function edit(no) {
+    inputRef.current.focus();
+    setIsEdited(true);
+    inputRef.current.value = todos.filter((item) => item.no === no).at(0).text;
+    setSelectedID(no);
+  }
+
+  function editTodo() {
+    const updatedTodoList = todos.map((todo) => {
+      if (todo.no === selectedID) {
+        return { ...todo, text: inputRef.current.value };
+      }
+      return todo;
+    });
+
+    setTodos(updatedTodoList);
+    setIsEdited(false);
+    inputRef.current.value = "";
+  }
+
   useEffect(() => {
     setTodos(JSON.parse(localStorage.getItem("todos")));
     count = localStorage.getItem("todos_count");
+    inputRef.current.focus();
   }, []);
 
   useEffect(() => {
@@ -36,7 +59,7 @@ const Todo = () => {
   return (
     <div className="todo">
       <div className="todo-header">Taskly</div>
-      <div className="todo-add">
+      <form className="todo-add" onSubmit={(e) => e.preventDefault()}>
         <input
           ref={inputRef}
           type="text"
@@ -44,26 +67,31 @@ const Todo = () => {
           className="todo-input"
         />
         <div
-          onClick={() => {
-            add();
+          onClick={(e) => {
+            isEdited ? editTodo(e) : add(e);
           }}
           className="todo-add-btn"
         >
-          Add
+          {isEdited ? "Save" : "Add"}
         </div>
-      </div>
+      </form>
       <div className="todo-list">
-        {todos.map((item, index) => {
-          return (
-            <TodoItems
-              key={index}
-              setTodos={setTodos}
-              no={item.no}
-              display={item.display}
-              text={item.text}
-            />
-          );
-        })}
+        {todos.length > 0 ? (
+          todos.map((item, index) => {
+            return (
+              <TodoItems
+                key={index}
+                setTodos={setTodos}
+                no={item.no}
+                display={item.display}
+                text={item.text}
+                edit={edit}
+              />
+            );
+          })
+        ) : (
+          <h2 className="h2">Please, add a todo :)</h2>
+        )}
       </div>
     </div>
   );
