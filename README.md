@@ -9,6 +9,7 @@ A dynamic and interactive Todo List application built with React and Vite. The a
 ---
 
 ## **Features**
+
 - **Add Tasks:** Dynamically add new tasks to the list.
 - **Mark as Done/Undone:** Toggle tasks as completed or incomplete.
 - **Remove Tasks:** Easily delete tasks from the list.
@@ -19,6 +20,7 @@ A dynamic and interactive Todo List application built with React and Vite. The a
 ---
 
 ## **Technologies Used**
+
 - **Frontend:**
   - React
   - Vite
@@ -35,17 +37,20 @@ A dynamic and interactive Todo List application built with React and Vite. The a
 Follow these steps to set up and run the project locally:
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/your-username/todo-list-app.git
    cd todo-list-app
    ```
 
 2. **Install dependencies**:
+
    ```bash
    npm install
    ```
 
 3. **Run the development server**:
+
    ```bash
    npm run dev
    ```
@@ -66,6 +71,7 @@ Follow these steps to set up and run the project locally:
 ---
 
 ## **Project Structure**
+
 ```
 todo-list-app/
 ├── public/                # Static files (assets like images, fonts, etc.)
@@ -90,17 +96,16 @@ todo-list-app/
 ├── eslint.config.js       # ESLint configuration
 
 ```
+
 ## 📸 Screenshots
 
 Dashboard:
 <img width="1918" height="977" alt="image" src="https://github.com/user-attachments/assets/b98bbfa4-e24b-483b-ab53-1eb09d11ef16" />
 
-
-
-
 ---
 
 ## **Future Enhancements**
+
 - Add task categories or priorities.
 - Implement a search or filter feature for tasks.
 - Allow task editing.
@@ -109,21 +114,25 @@ Dashboard:
 ---
 
 ## **Contributing**
-Contributions, issues, and feature requests are welcome!  
-1. Fork the project.  
-2. Create your feature branch: `git checkout -b feature/your-feature`.  
-3. Commit your changes: `git commit -m 'Add your message'`.  
-4. Push to the branch: `git push origin feature/your-feature`.  
+
+Contributions, issues, and feature requests are welcome!
+
+1. Fork the project.
+2. Create your feature branch: `git checkout -b feature/your-feature`.
+3. Commit your changes: `git commit -m 'Add your message'`.
+4. Push to the branch: `git push origin feature/your-feature`.
 5. Open a pull request.
 
 ---
 
 ## **License**
+
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
 ---
 
 ## **Acknowledgments**
+
 Thanks to the React and Vite teams for their awesome tools and documentation!
 
 ---
